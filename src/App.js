@@ -2,14 +2,16 @@
 import React from 'react';
 import Header from './components/Header';
 import Meals from './components/Meals';
-import { CartProvider } from './store/CartContext';
+import { CartProvider, useCart } from './store/CartContext'; // Import useCart hook
 
 const App = () => {
+    const { addToCart } = useCart();
+
     return (
-        <CartProvider> {/* Wrap your components with the CartProvider */}
+        <CartProvider>
             <div className="App">
                 <Header />
-                <Meals />
+                <Meals addToCart={addToCart} />
                 {/* Other components */}
             </div>
         </CartProvider>
