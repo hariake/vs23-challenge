@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Modal from './UI/Modal';
 import logo from '../assets/logo.jpg';
 import Button from './UI/Button';
+import CartContext from '../store/CartContext';
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [cartItems, setCartItems] = useState([]); // Assuming you have cart items stored in state
 
-    const handleButtonClick = () => {
+    const handleCartButtonClick = () => {
         setIsModalOpen(true);
     };
 
@@ -15,6 +15,9 @@ const Header = () => {
         setIsModalOpen(false);
     };
 
+    const cartContext = useContext(CartContext)
+
+    console.log(cartContext)
     return (
         <header id="main-header">
             <div id="title">
@@ -22,15 +25,12 @@ const Header = () => {
                 <h1>React Food Order App</h1>
             </div>
             <nav>
-                <Button textOnly={true} onClick={handleButtonClick}>
-                    Cart ({cartItems.length})
+                <Button textOnly={true} onClick={handleCartButtonClick}>
+                    Cart (0)
                 </Button>
                 <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                    <ul>
-                        {cartItems.map(item => (
-                            <li key={item.id}>{item.name}</li>
-                        ))}
-                    </ul>
+                    {/* Content inside the modal */}
+                    <p>This is the content of the modal.</p>
                 </Modal>
             </nav>
         </header>

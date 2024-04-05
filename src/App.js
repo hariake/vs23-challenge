@@ -1,21 +1,21 @@
-// App.js
-import React from 'react';
 import Header from './components/Header';
 import Meals from './components/Meals';
-import { CartProvider, useCart } from './store/CartContext'; // Import useCart hook
+import CartContext from './store/CartContext';
+import React, { useState } from 'react';
 
 const App = () => {
-    const { addToCart } = useCart();
+  const [cart, setCart] = useState([]);
+  
+  const addItem = (item) => {
+    setCart(prevCart => [...prevCart, item]);
+  };
 
-    return (
-        <CartProvider>
-            <div className="App">
-                <Header />
-                <Meals addToCart={addToCart} />
-                {/* Other components */}
-            </div>
-        </CartProvider>
-    );
-};
+  return (
+    <CartContext.Provider value={{ cart, addItem }}>
+      <Header/>
+      <Meals/>
+    </CartContext.Provider>
+  );
+}
 
 export default App;

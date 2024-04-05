@@ -5,7 +5,7 @@ const Button = ({ textOnly, onClick, children }) => {
 
     return (
         <button className={buttonClass} onClick={onClick}>
-            {children} {/* Render props.children as the text of the button */}
+            {children} 
         </button>
     );
 };

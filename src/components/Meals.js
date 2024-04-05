@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import MealItem from './MealItem';
-import "./index.css";
-
 
 const Meals = () => {
     const [meals, setMeals] = useState([]);
