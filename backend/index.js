@@ -1,12 +1,12 @@
 const fs = require("fs/promises");
 const bodyParser = require("body-parser")
-const path = require("path");
+//const path = require("path");
 const express = require("express");
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "..", "build")));
+//app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/meals", async (req, res) => {
-  const meals = "[]" // data should be read from file
+  const meals = await fs.readFile("./data/meals.json")
   res.json(JSON.parse(meals));
 });
 
