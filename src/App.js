@@ -1,19 +1,19 @@
+// App.js
 import React from 'react';
-import Header from './components/Header'; // Path adjusted to components folder
-import Meals from './components/Meals'; // Path adjusted to components folder
+import Header from './components/Header';
+import Meals from './components/Meals';
+import { CartProvider } from './store/CartContext';
 
-
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <main>
-        <h1>Welcome to the React Food Order App</h1>
-        <Meals />
-        { /* Other components or content */ }
-      </main>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <CartProvider> {/* Wrap your components with the CartProvider */}
+            <div className="App">
+                <Header />
+                <Meals />
+                {/* Other components */}
+            </div>
+        </CartProvider>
+    );
+};
 
 export default App;

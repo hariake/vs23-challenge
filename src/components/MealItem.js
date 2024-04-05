@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from './UI/Button';
 const MealItem = (props) => {
     // Format price as Euro currency with the currency symbol displayed after the value
     const formattedPrice = new Intl.NumberFormat('de-DE', {
@@ -18,7 +18,9 @@ const MealItem = (props) => {
                     <p>{props.meal.description}</p>
                 </div>
                 <p>
-                    <button>Add to Cart</button>
+                <Button textOnly={false} onClick={() => console.log('Regular button clicked')}>
+                Add Meal
+            </Button>
                 </p>
             </article>
         </li>
